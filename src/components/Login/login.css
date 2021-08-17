@@ -1,0 +1,49 @@
+/*--Main Div Container LoginPage --*/
+.LoginPage{
+   background: #CBC3E3;
+}
+
+/*--Header section --*/
+.Header{
+    margin:auto; 
+    text-align:center;
+    background: purple;
+    height:150px;
+}
+
+.LoginPage h1{
+    color:#CBC3E3;
+    padding-top:50px;
+}
+
+/*-- Login Button section --*/
+.FormBox{
+    justify-content: center;
+    box-sizing: border-box;
+    border:1px solid ;
+    width:500px;
+    height:250px;
+    margin-top: 100px;
+    margin-left: 430px;
+}
+
+.FormBox h3{
+    text-align: center;
+    padding:20px;
+}
+
+.FormBox button{
+
+    width:120px;
+    height: 40px;
+    padding:3px;
+    border-radius: 10px;
+    font-weight: bold;
+    border:none;
+    background: crimson;
+    margin-top:20px;
+    width: 175px;
+    margin-left: 150px;
+    color:white
+    
+}
