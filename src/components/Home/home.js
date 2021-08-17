@@ -20,26 +20,12 @@ function Home () {
         value=event.target.value;
         setUser({...user, [name]:value })
     }
-
-    //Function to add or edit
-       const addOrEdit =() =>{
-        if (userId == '')
-        {
-            postData();
-        }
-        else
-        {
-            updateData();
-        }
-    }
  
     //Function to submit user form details to the Firebase realtime database
-    const postData= async(e) =>{
-        e.preventDefault();
- 
+    const postData= async() =>{
+
         const {name,weight} = user;
         const time= new Date().toLocaleTimeString();
-        console.log(time)
         if(name && weight)
         {
          
@@ -60,7 +46,6 @@ function Home () {
                         name:"",
                         weight:""
                 })
-                
                 alert("Data Stored Successfully!!")
             }
         }else{
@@ -86,8 +71,9 @@ function Home () {
             weight:""
          });
          setUserId('')
+         
     }
- 
+    console.log("")
     // Event handler to update the current firebase data in update form.
     const handleUpdate= (id, data) =>{
       setUser(data);
@@ -131,14 +117,14 @@ function Home () {
                     <button class="ButtonGroup" id="logout" onClick={handleLogout}>Logout</button>
                </div>
                
-               <div class="row">
-                    
-                        <div class="boxBorder">
+               <div className="row">
+                    <div className="col">
+                        <div className="boxBorder">
                             <h4>Add user's weight</h4>
                             <form method="POST">
                                 
                                 <label>Name:</label>
-                                <div class="InputControls">
+                                <div className="InputControls">
                                     <input
                                         type="text"
                                         name="name"
@@ -150,7 +136,7 @@ function Home () {
                                 </div>
 
                                 <label>Weight (kg):</label>
-                                <div class="InputControls" >
+                                <div className="InputControls" >
                                     <input
                                         type="text"
                                         name="weight"
@@ -161,17 +147,23 @@ function Home () {
                                     />
                                 </div>
 
-                                <button onClick={addOrEdit} class="ButtonGroup" id="Add" type="Submit" > {userId == '' ?'Add':'Edit'}</button>
-
+                                {
+                                    
+                                    userId === ''? 
+                                    <button onClick= {postData}  className="ButtonGroup" id="Add" type="Submit" > Add</button>
+                                    :
+                                    <button onClick= {updateData} className="ButtonGroup" id="Add" type="Submit" > Edit</button>    
+                                }
+                                
                             </form>
-                        
+                        </div>
                     </div>
 
                   
             </div>
             <hr></hr>
 
-            <div class="row" id="TableContent">
+            <div className="row" id="TableContent">
                 <h2>User Details Table</h2>
                     {userList.length == 0 ? <h1>No Data available</h1> :
                         <table>
