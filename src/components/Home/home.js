@@ -22,8 +22,8 @@ function Home () {
     }
  
     //Function to submit user form details to the Firebase realtime database
-    const postData= async() =>{
-
+    const postData= async(e) =>{
+        e.preventDefault();
         const {name,weight} = user;
         const time= new Date().toLocaleTimeString();
         if(name && weight)
